@@ -1,4 +1,9 @@
 use crate::equipment::equipment_type::EquipmentType;
+use crate::characters::character_base::CharacterBase;
+
+pub trait Character {
+    fn new(stats: CharacterBase) -> Self;
+}
 
 pub trait Combat {
     fn attack(&self) -> u32;

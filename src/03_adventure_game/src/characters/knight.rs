@@ -1,4 +1,6 @@
-use crate::traits::{Combat, Inventory};
+use crate::characters::character_traits::{
+    Character, Combat, Inventory
+};
 use crate::equipment::equipment_type::EquipmentType;
 use crate::characters::character_base::CharacterBase;
 
@@ -6,6 +8,15 @@ use crate::characters::character_base::CharacterBase;
 pub struct Knight {
     pub stats: CharacterBase,
     pub equipment: Vec<EquipmentType>,
+}
+
+impl Character for Knight {
+    fn new(stats: CharacterBase) -> Self {
+        Knight { 
+            stats, 
+            equipment: Vec::new() 
+        }
+    }
 }
 
 impl Combat for Knight {
