@@ -1,10 +1,12 @@
 
 use std::io;
 use std::str::FromStr;
-use crate::characters::character_traits::Character;
-use crate::characters::character_type::CharacterType;
-use crate::characters::character_base::CharacterBase;
-use crate::characters::{Knight, Archer, Thief, Wizard};
+use crate::characters::{
+    character_traits::Character, 
+    character_type::CharacterType, 
+    character_base::CharacterBase, 
+    Knight, Archer, Thief, Wizard
+};
 use crate::inventory::character_inventory::CharacterInventory;
 
 pub fn read_input<T: FromStr>() -> T {

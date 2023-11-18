@@ -6,7 +6,9 @@ pub mod character_type;
 pub mod character_base;
 pub mod character_traits;
 
-pub use self::knight::Knight;
-pub use self::archer::Archer;
-pub use self::thief::Thief;
-pub use self::wizard::Wizard;
+pub use self::{
+    knight::Knight,
+    archer::Archer,
+    thief::Thief,
+    wizard::Wizard
+};

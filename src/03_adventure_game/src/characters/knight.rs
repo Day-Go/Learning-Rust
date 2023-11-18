@@ -1,5 +1,4 @@
 use crate::characters::character_traits::Character;
-use crate::equipment::equipment_type::EquipmentType;
 use crate::characters::character_base::CharacterBase;
 use crate::inventory::character_inventory::CharacterInventory;
 
