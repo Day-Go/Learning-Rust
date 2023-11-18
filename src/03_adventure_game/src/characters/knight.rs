@@ -8,19 +8,15 @@ pub struct Knight {
     pub luck :u32
 }
 
-impl Attack for Knight {
+impl Combat for Knight {
     fn attack(&self) -> u32 {
         self.strength
     }
-}
 
-impl Defend for Knight {
     fn defend(&self) -> u32 {
         self.vitality
     }
-}
 
-impl SpecialMove for Knight {
     fn special(&self) -> u32 {
         self.strength + self.vitality
     }

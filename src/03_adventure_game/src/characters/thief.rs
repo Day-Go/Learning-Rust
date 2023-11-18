@@ -1,4 +1,4 @@
-use crate::traits::{Attack, Defend, SpecialMove};
+use crate::traits::{Combat};
 
 pub struct Thief {
     pub strength: u32,
@@ -8,19 +8,15 @@ pub struct Thief {
     pub luck :u32
 }
 
-impl Attack for Thief {
+impl Combat for Thief {
     fn attack(&self) -> u32 {
         self.luck
     }
-}
 
-impl Defend for Thief {
     fn defend(&self) -> u32 {
         self.vitality
     }
-}
 
-impl SpecialMove for Thief {
     fn special(&self) -> u32 {
         self.luck + self.agility
     }

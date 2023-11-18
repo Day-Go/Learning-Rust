@@ -8,20 +8,17 @@ pub struct Archer {
     pub luck :u32    
 }
 
-impl Attack for Archer {
+impl Combat for Archer {
     fn attack(&self) -> u32 {
         self.agility
     }
-}
 
-impl Defend for Archer {
     fn defend(&self) -> u32 {
         self.vitality
     }
-}
 
-impl SpecialMove for Archer {
     fn special(&self) -> u32 {
         self.agility + self.intelligence
     }
 }
+
