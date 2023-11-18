@@ -1,66 +1,21 @@
+mod game;
 mod characters;
 mod equipment;
 mod inventory;
 
-use std::io;
-use std::str::FromStr;
-use crate::characters::character_base::CharacterBase;
 use crate::characters::{
     Knight, 
     Archer, 
     Thief, 
     Wizard
 };
-use crate::characters::character_traits::{Character, Combat};
-use crate::inventory::character_inventory::CharacterInventory;
+use crate::characters::character_traits::Combat;
 use crate::equipment::equipment_type::EquipmentType;
 use crate::equipment::weapon::{Weapon, WeaponType};
 
 
-fn read_input<T: FromStr>() -> T {
-    loop {
-        let mut input = String::new();
-
-        io::stdin()
-            .read_line(&mut input)
-            .expect("Failed to read line");
-
-        match input.trim().parse::<T>() {
-            Ok(num) => return num,
-            Err(_) => println!("Please enter a valid number"),
-        }
-    }
-}
-
-fn get_character_stats() -> CharacterBase {
-    let attributes = ["strength", "vitality", "agility", "intelligence", "luck"];
-    let mut values = Vec::new();
-
-    for &attr in &attributes {
-        println!("Please enter your character's {}: ", attr);
-        values.push(read_input::<u32>());
-    }
-
-    CharacterBase {
-        strength: values[0],
-        vitality: values[1],
-        agility: values[2],
-        intelligence: values[3],
-        luck: values[4],
-    }
-}
-
-
-fn create_character<T: Character>() -> T {
-    let stats = get_character_stats();
-    let inventory = CharacterInventory::new();
-    T::new(stats, inventory)
-}
-
-
-
 fn main() {
-    let mut knight: Knight = create_character();
+    let mut knight: Knight = game::create_character();
 
     println!("Knight attack power: {}", knight.attack());
 
