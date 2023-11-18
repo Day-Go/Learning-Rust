@@ -1,5 +1,6 @@
 mod characters;
 mod equipment;
+mod inventory;
 
 use std::io;
 use std::str::FromStr;
@@ -10,11 +11,8 @@ use crate::characters::{
     Thief, 
     Wizard
 };
-use crate::characters::character_traits::{
-    Character, 
-    Combat, 
-    Inventory
-};
+use crate::characters::character_traits::{Character, Combat};
+use crate::inventory::character_inventory::CharacterInventory;
 use crate::equipment::equipment_type::EquipmentType;
 use crate::equipment::weapon::{Weapon, WeaponType};
 
@@ -55,8 +53,8 @@ fn get_character_stats() -> CharacterBase {
 
 fn create_character<T: Character>() -> T {
     let stats = get_character_stats();
-
-    T::new(stats)
+    let inventory = CharacterInventory::new();
+    T::new(stats, inventory)
 }
 
 
@@ -74,6 +72,7 @@ fn main() {
 
     let sword_equipment = EquipmentType::Weapon(sword);
 
-    let result = knight.add_item(sword_equipment);
-    println!("Knight found a new piece of equipment: {}", knight.equipment.len());
+    let result = knight.inventory.add_item(sword_equipment);
+    println!("Knight found a new piece of equipment: {}", 
+              knight.inventory.equipment.len());
 }

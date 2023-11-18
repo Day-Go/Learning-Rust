@@ -1,19 +1,21 @@
 use crate::characters::character_traits::{
-    Character, Combat, Inventory
+    Character, Combat
 };
 use crate::equipment::equipment_type::EquipmentType;
 use crate::characters::character_base::CharacterBase;
+use crate::inventory::character_inventory::CharacterInventory;
+
 
 pub struct Wizard {
     pub stats: CharacterBase,
-    pub equipment: Vec<EquipmentType>
+    pub inventory: CharacterInventory
 }
 
 impl Character for Wizard {
-    fn new(stats: CharacterBase) -> Self {
+    fn new(stats: CharacterBase, inventory: CharacterInventory) -> Self {
         Wizard { 
             stats, 
-            equipment: Vec::new() 
+            inventory
         }
     }
 }

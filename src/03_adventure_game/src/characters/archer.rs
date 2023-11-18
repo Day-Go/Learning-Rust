@@ -1,20 +1,21 @@
 use crate::characters::character_traits::{
-    Character, Combat, Inventory
+    Character, Combat
 };
 use crate::equipment::equipment_type::EquipmentType;
 use crate::characters::character_base::CharacterBase;
+use crate::inventory::character_inventory::CharacterInventory;
 
 
 pub struct Archer {
     pub stats: CharacterBase,
-    pub equipment: Vec<EquipmentType>
+    pub inventory: CharacterInventory
 }
 
 impl Character for Archer {
-    fn new(stats: CharacterBase) -> Self {
+    fn new(stats: CharacterBase, inventory: CharacterInventory) -> Self {
         Archer { 
             stats, 
-            equipment: Vec::new() 
+            inventory
         }
     }
 }
@@ -30,15 +31,5 @@ impl Combat for Archer {
 
     fn special(&self) -> u32 {
         self.stats.agility + self.stats.intelligence
-    }
-}
-
-impl Inventory for Archer {
-    fn add_item(&mut self, item: EquipmentType) -> () {
-        self.equipment.push(item);
-    }
-
-    fn remove_item(&mut self, item: EquipmentType) -> () {
-        self.equipment.pop();
     }
 }

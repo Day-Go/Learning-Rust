@@ -1,20 +1,20 @@
 use crate::characters::character_traits::{
-    Character, Combat, Inventory
+    Character, Combat
 };
 use crate::equipment::equipment_type::EquipmentType;
 use crate::characters::character_base::CharacterBase;
-
+use crate::inventory::character_inventory::CharacterInventory;
 
 pub struct Knight {
     pub stats: CharacterBase,
-    pub equipment: Vec<EquipmentType>,
+    pub inventory: CharacterInventory
 }
 
 impl Character for Knight {
-    fn new(stats: CharacterBase) -> Self {
+    fn new(stats: CharacterBase, inventory: CharacterInventory) -> Self {
         Knight { 
             stats, 
-            equipment: Vec::new() 
+            inventory
         }
     }
 }
@@ -30,15 +30,5 @@ impl Combat for Knight {
 
     fn special(&self) -> u32 {
         self.stats.strength + self.stats.vitality
-    }
-}
-
-impl Inventory for Knight {
-    fn add_item(&mut self, item: EquipmentType) -> () {
-        self.equipment.push(item);
-    }
-
-    fn remove_item(&mut self, item: EquipmentType) -> () {
-        self.equipment.pop();
     }
 }
