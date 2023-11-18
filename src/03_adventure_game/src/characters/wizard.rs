@@ -1,25 +1,23 @@
 use crate::traits::Combat;
 use crate::equipment::equipment_type::EquipmentType;
+use crate::characters::character_base::CharacterBase;
+
 
 pub struct Wizard {
-    pub strength: u32,
-    pub vitality: u32,
-    pub agility: u32,
-    pub intelligence: u32,
-    pub luck :u32,
+    pub stats: CharacterBase,
     pub equipment: Vec<EquipmentType>
 }
 
 impl Combat for Wizard {
     fn attack(&self) -> u32 {
-        self.intelligence
+        self.stats.intelligence
     }
 
     fn defend(&self) -> u32 {
-        self.vitality
+        self.stats.vitality
     }
 
     fn special(&self) -> u32 {
-        self.intelligence + self.vitality
+        self.stats.intelligence + self.stats.vitality
     }
 }
