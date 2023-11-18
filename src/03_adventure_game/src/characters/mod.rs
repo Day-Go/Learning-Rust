@@ -2,8 +2,6 @@ pub mod knight;
 pub mod archer;
 pub mod thief;
 pub mod wizard;
-pub mod character_type;
-pub mod character_base;
 pub mod character_traits;
 
 pub use self::{

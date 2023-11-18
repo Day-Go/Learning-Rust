@@ -2,9 +2,11 @@
 use std::io;
 use std::str::FromStr;
 use crate::characters::{
-    character_traits::Character, 
-    character_type::CharacterType, 
-    character_base::CharacterBase, 
+    character_traits::{
+        Character,
+        CharacterType,
+        CharacterBase
+    },
     Knight, Archer, Thief, Wizard
 };
 use crate::inventory::character_inventory::CharacterInventory;

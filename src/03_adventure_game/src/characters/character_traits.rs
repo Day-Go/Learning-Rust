@@ -1,7 +1,30 @@
 use crate::equipment::equipment_type::EquipmentType;
-use crate::characters::character_base::CharacterBase;
 use crate::inventory::character_inventory::CharacterInventory;
 
+pub enum CharacterType {
+    Knight,
+    Archer,
+    Wizard,
+    Thief,
+}
+
+pub struct CharacterBase {
+    pub strength: u32,
+    pub vitality: u32,
+    pub agility: u32,
+    pub intelligence: u32,
+    pub luck: u32,
+}
+
+impl CharacterBase {
+    pub fn hp(&self) -> u32 {
+        self.vitality * 10 + self.strength * 2
+    }
+
+    pub fn mp(&self) -> u32 {
+        self.intelligence * 10 + self.agility * 2
+    }
+}
 
 pub trait Character {
     fn new(stats: CharacterBase, inventory: CharacterInventory) -> Self where Self: Sized;

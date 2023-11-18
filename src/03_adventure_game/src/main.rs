@@ -3,7 +3,7 @@ mod characters;
 mod equipment;
 mod inventory;
 
-use crate::characters::character_base::CharacterBase;
+use crate::characters::character_traits::CharacterBase;
 use crate::inventory::character_inventory::CharacterInventory;
 use crate::equipment::equipment_type::EquipmentType;
 use crate::equipment::weapon::{Weapon, WeaponType};

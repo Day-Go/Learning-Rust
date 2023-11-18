@@ -1,5 +1,7 @@
-use crate::characters::character_traits::Character;
-use crate::characters::character_base::CharacterBase;
+use crate::characters::character_traits::{
+    Character,
+    CharacterBase
+};
 use crate::inventory::character_inventory::CharacterInventory;
 
 
