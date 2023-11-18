@@ -1,5 +1,5 @@
-use crate::traits::{Combat};
-use crate::equipment::EquipmentType;
+use crate::traits::Combat;
+use crate::equipment::equipment_type::EquipmentType;
 
 pub struct Wizard {
     pub strength: u32,
