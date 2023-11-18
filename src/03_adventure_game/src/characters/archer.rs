@@ -1,6 +1,4 @@
-use crate::characters::character_traits::{
-    Character, Combat
-};
+use crate::characters::character_traits::Character;
 use crate::equipment::equipment_type::EquipmentType;
 use crate::characters::character_base::CharacterBase;
 use crate::inventory::character_inventory::CharacterInventory;
@@ -13,14 +11,9 @@ pub struct Archer {
 
 impl Character for Archer {
     fn new(stats: CharacterBase, inventory: CharacterInventory) -> Self {
-        Archer { 
-            stats, 
-            inventory
-        }
+        Archer { stats, inventory }
     }
-}
 
-impl Combat for Archer {
     fn attack(&self) -> u32 {
         self.stats.agility
     }
@@ -31,5 +24,13 @@ impl Combat for Archer {
 
     fn special(&self) -> u32 {
         self.stats.agility + self.stats.intelligence
+    }
+
+    fn get_inventory(&mut self) -> &mut CharacterInventory {
+        &mut self.inventory
+    }
+
+    fn get_inventory_length(&self) -> usize {
+        self.inventory.equipment.len()
     }
 }
