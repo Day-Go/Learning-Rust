@@ -1,6 +1,9 @@
 
 use std::io;
 use std::str::FromStr;
+use rand::Rng;
+use rand::seq::SliceRandom;
+
 use crate::characters::{
     character_traits::{
         Character,
@@ -10,6 +13,7 @@ use crate::characters::{
     Knight, Archer, Thief, Wizard
 };
 use crate::inventory::character_inventory::CharacterInventory;
+use crate::enemy::enemy_traits::EnemyType;
 
 pub fn read_input<T: FromStr>() -> T {
     loop {
@@ -76,4 +80,19 @@ pub fn create_character(
         CharacterType::Wizard => Box::new(Wizard::new(stats, inventory)),
         CharacterType::Thief => Box::new(Thief::new(stats, inventory)),
     }
+}
+
+
+pub fn choose_random_enemy_type() -> EnemyType {
+    let enemy_types = [
+        EnemyType::Goblin,
+        EnemyType::Orc,
+        EnemyType::Troll,
+        EnemyType::Wolf,
+        EnemyType::Bear,
+        EnemyType::Dragon,
+    ];
+
+    // Get a random enemy type from the array
+    *enemy_types.choose(&mut rand::thread_rng()).unwrap()
 }

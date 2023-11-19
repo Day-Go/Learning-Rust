@@ -2,6 +2,7 @@ mod game;
 mod characters;
 mod equipment;
 mod inventory;
+mod enemy;
 
 use crate::characters::character_traits::CharacterBase;
 use crate::inventory::character_inventory::CharacterInventory;
@@ -10,7 +11,8 @@ use crate::equipment::weapon::{Weapon, WeaponType};
 use crate::game::helper::{
     init_character_stats, 
     select_character_type,
-    create_character
+    create_character,
+    choose_random_enemy_type
 };
 
 fn main() {
@@ -24,18 +26,22 @@ fn main() {
         inventory
     );
 
+    loop {
+        let enemy_type = choose_random_enemy_type();
+    }
 
-    println!("Knight attack power: {}", character.attack());
 
-    let sword = Weapon {
-        weapon_type: WeaponType::Sword,
-        attack: 5,
-        attack_speed: 1,
-    };
+    // println!("Knight attack power: {}", character.attack());
 
-    let sword_equipment = EquipmentType::Weapon(sword);
+    // let sword = Weapon {
+    //     weapon_type: WeaponType::Sword,
+    //     attack: 5,
+    //     attack_speed: 1,
+    // };
 
-    let result = character.add_item_to_inventory(sword_equipment);
-    println!("Knight found a new piece of equipment: {}", 
-              character.get_inventory_length());
+    // let sword_equipment = EquipmentType::Weapon(sword);
+
+    // let result = character.add_item_to_inventory(sword_equipment);
+    // println!("Knight found a new piece of equipment: {}", 
+    //           character.get_inventory_length());
 }
