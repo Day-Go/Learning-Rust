@@ -1,13 +1,23 @@
 use std::fmt::{Display, Result, Formatter};
 
-enum State {
+pub enum State {
     Solid,
     Liquid,
     Gas
 }
 
+impl Display for State {
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result {
+        match self {
+            State::Solid => write!(f, "Solid"),
+            State::Liquid => write!(f, "Liquid"),
+            State::Gas => write!(f, "Gas")
+        }
+    }
+}
+
 pub trait Cell {
-    fn update(&self);
+    fn update(&mut self);
 }
 
 pub struct Water {
@@ -33,6 +43,12 @@ impl Water {
     }
 }
 
+impl Cell for Water {
+    fn update(&mut self) {
+        self.temperature -= 1;
+    }
+}   
+
 impl Lava {
     pub fn state(&self) -> State {
         if self.temperature < 700 {
@@ -44,6 +60,12 @@ impl Lava {
     }
 
 }
+
+impl Cell for Lava {
+    fn update(&mut self) {
+        self.temperature -= 1;
+    }
+}   
 
 impl Display for Lava {
     fn fmt(&self, f: &mut Formatter<'_>) -> Result {
